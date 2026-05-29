@@ -1,6 +1,19 @@
 # Microsoft 365 and Azure Automated Employee Onboarding App
 
 ## Overview
+
+<div align="center">
+<p>
+  <a href="https://youtu.be/NgU25HxfVfI">
+    <img src="https://img.youtube.com/vi/NgU25HxfVfI/hqdefault.jpg" alt="Watch the video" width="70%">
+  </a>
+</p>
+<a href="https://youtu.be/NgU25HxfVfI">
+▶️ Click above to watch a YouTube demo
+ </a>
+</div>
+</br>
+
 I created this project to demonstrate the capabilities of Microsoft Cloud technologies for onboarding employees. This project started for me as a cloud engineer to practice using Azure Services. When brainstorming new demo projects to work on I look to build something that could address real world business needs.
 
 Onboarding employees creates bottlenecks in organization growth. The manual process of provisioning new identities and collaborative infrastructure is error prone and time consuming.
