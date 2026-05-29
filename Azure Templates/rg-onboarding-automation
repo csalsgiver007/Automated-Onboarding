@@ -1,0 +1,407 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "arm",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_ADMIN_EMAIL",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {
+                    "token:grantType": "code"
+                },
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "arm",
+                    "displayName": "Azure Resource Manager",
+                    "description": "Azure Resource Manager exposes the APIs to manage all of your Azure resources.",
+                    "iconUri": "REDACTED_URI",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/arm",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "arm-1",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_SERVICE_ACCOUNT",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {
+                    "token:grantType": "code"
+                },
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "arm",
+                    "displayName": "Azure Resource Manager",
+                    "description": "Azure Resource Manager exposes the APIs to manage all of your Azure resources.",
+                    "iconUri": "REDACTED_URI",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/arm",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "azuread",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "Microsoft Entra ID",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "azuread",
+                    "displayName": "Microsoft Entra ID",
+                    "description": "REDACTED_DESCRIPTION",
+                    "iconUri": "REDACTED_URI",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/azuread",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "office365-1",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_SERVICE_ACCOUNT",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "office365",
+                    "displayName": "Office 365 Outlook",
+                    "description": "REDACTED_DESCRIPTION",
+                    "iconUri": "REDACTED_URI",
+                    "brandColor": "#0078D4",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "https://management.azure.com:443/subscriptions/REDACTED_SUB_ID/resourceGroups/REDACTED_RG/providers/Microsoft.Web/connections/office365-1/extensions/proxy/testconnection?api-version=2016-06-01",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "office365groups-1",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_SERVICE_ACCOUNT",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "office365groups",
+                    "displayName": "Office 365 Groups",
+                    "description": "REDACTED_DESCRIPTION",
+                    "iconUri": "REDACTED_URI",
+                    "brandColor": "#EB3C00",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/office365groups",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "sharepointonline-1",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_SERVICE_ACCOUNT",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "sharepointonline",
+                    "displayName": "SharePoint",
+                    "description": "REDACTED_DESCRIPTION",
+                    "iconUri": "REDACTED_URI",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/sharepointonline",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "https://management.azure.com:443/subscriptions/REDACTED_SUB_ID/resourceGroups/REDACTED_RG/providers/Microsoft.Web/connections/sharepointonline-1/extensions/proxy/datasets?api-version=2016-06-01",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "teams-1",
+            "location": "eastus",
+            "kind": "V1",
+            "properties": {
+                "displayName": "REDACTED_USER_EMAIL",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "REDACTED_TIMESTAMP",
+                "changedTime": "REDACTED_TIMESTAMP",
+                "api": {
+                    "name": "teams",
+                    "displayName": "Microsoft Teams",
+                    "description": "REDACTED_DESCRIPTION",
+                    "iconUri": "REDACTED_URI",
+                    "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/teams",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "https://management.azure.com:443/subscriptions/REDACTED_SUB_ID/resourceGroups/REDACTED_RG/providers/Microsoft.Web/connections/teams-1/extensions/proxy/beta/me/teamwork?api-version=2016-06-01",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "la-onboard-automator",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/connections', 'sharepointonline-1')]",
+                "[resourceId('Microsoft.Web/connections', 'azuread')]",
+                "[resourceId('Microsoft.Web/connections', 'office365-1')]",
+                "[resourceId('Microsoft.Web/connections', 'office365groups-1')]",
+                "[resourceId('Microsoft.Web/connections', 'arm-1')]",
+                "[resourceId('Microsoft.Web/connections', 'teams-1')]"
+            ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "When_an_item_is_created": {
+                            "recurrence": {
+                                "interval": 3,
+                                "frequency": "Minute",
+                                "timeZone": "Eastern Standard Time"
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['sharepointonline-1']['connectionId']"
+                                    }
+                                },
+                                "method": "get",
+                                "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://REDACTED_TENANT.sharepoint.com/sites/AutoOnboarding/'))}/tables/@{encodeURIComponent(encodeURIComponent('REDACTED_LIST_ID'))}/onnewitems"
+                            }
+                        }
+                    },
+                    "actions": {
+                        "Create_user": {
+                            "runAfter": {
+                                "Compose_-_Temp_Password": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azuread']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "body": {
+                                    "accountEnabled": true,
+                                    "displayName": "@{triggerBody()?['Title']} @{triggerBody()?['LastName']}",
+                                    "mailNickname": "@concat(triggerOutputs()?['body/Title'], triggerOutputs()?['body/LastName'])",
+                                    "passwordProfile": {
+                                        "password": "@{outputs('Compose_-_Temp_Password')}"
+                                    },
+                                    "userPrincipalName": "@concat(triggerOutputs()?['body/Title'], '.', triggerOutputs()?['body/LastName'], '@REDACTED_DOMAIN.com')",
+                                    "givenName": "@triggerBody()?['Title']",
+                                    "surname": "@triggerBody()?['LastName']",
+                                    "department": "@triggerBody()?['Department']?['Value']",
+                                    "jobTitle": "@triggerBody()?['Position']",
+                                    "usageLocation": "US"
+                                },
+                                "path": "/v1.0/users"
+                            }
+                        },
+                        "Add_user_to_Business_Premium_365_Licensed_Users": {
+                            "runAfter": {
+                                "Create_user": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azuread-1']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "body": {
+                                    "@@odata.id": "@body('Create_user')?['id']"
+                                },
+                                "path": "/v1.0/groups/@{encodeURIComponent('REDACTED_GROUP_ID')}/members/$ref"
+                            }
+                        },
+                        "Condition-_Check_if_User_needs_Azure_Resources": {
+                            "actions": {
+                                "Create_or_update_a_resource_group": {
+                                    "type": "ApiConnection",
+                                    "inputs": {
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['arm-1']['connectionId']"
+                                            }
+                                        },
+                                        "method": "put",
+                                        "body": {
+                                            "location": "eastus"
+                                        },
+                                        "path": "/subscriptions/@{encodeURIComponent('REDACTED_SUB_ID')}/resourcegroups/@{encodeURIComponent(concat('rg-sandbox-', toLower(replace(triggerOutputs()?['body/Title'], ' ', ''))))}",
+                                        "queries": {
+                                            "x-ms-api-version": "2016-06-01"
+                                        }
+                                    }
+                                },
+                                "Create_or_update_a_resource": {
+                                    "runAfter": {
+                                        "Delay_1_Minute": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "ApiConnection",
+                                    "inputs": {
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['arm-1']['connectionId']"
+                                            }
+                                        },
+                                        "method": "put",
+                                        "body": {
+                                            "properties": {
+                                                "roleDefinitionId": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Authorization/roleDefinitions/REDACTED_ROLE_ID",
+                                                "principalId": "@{outputs('Create_user')?['body/id']}",
+                                                "principalType": "User"
+                                            }
+                                        },
+                                        "path": "/subscriptions/@{encodeURIComponent('REDACTED_SUB_ID')}/resourcegroups/@{encodeURIComponent(concat('rg-sandbox-', toLower(replace(triggerOutputs()?['body/Title'], ' ', ''))))}/providers/@{encodeURIComponent('Microsoft.Authorization')}/@{encodeURIComponent(concat('roleAssignments/', guid()))}",
+                                        "queries": {
+                                            "x-ms-api-version": "2022-04-01"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "sharepointonline-1": {
+                                "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/sharepointonline",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'sharepointonline-1')]",
+                                "connectionName": "sharepointonline-1"
+                            },
+                            "azuread": {
+                                "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/azuread",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'azuread')]",
+                                "connectionName": "azuread"
+                            },
+                            "office365-1": {
+                                "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'office365-1')]",
+                                "connectionName": "office365-1"
+                            },
+                            "arm-1": {
+                                "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/arm",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'arm-1')]",
+                                "connectionName": "arm-1"
+                            },
+                            "teams-1": {
+                                "id": "/subscriptions/REDACTED_SUB_ID/providers/Microsoft.Web/locations/eastus/managedApis/teams",
+                                "connectionId": "[resourceId('Microsoft.Web/connections', 'teams-1')]",
+                                "connectionName": "teams-1"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,170 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworks_vnet_mdr_name": {
+            "defaultValue": "vnet-mdr",
+            "type": "String"
+        },
+        "storageAccounts_lumonstorage_name": {
+            "defaultValue": "lumonstorage",
+            "type": "String"
+        },
+        "registries_lumonregistry_name": {
+            "defaultValue": "lumonregistry",
+            "type": "String"
+        },
+        "userAssignedIdentities_id_mdr_worker_prod_name": {
+            "defaultValue": "id-mdr-worker-prod",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ContainerRegistry/registries",
+            "apiVersion": "2025-11-01",
+            "name": "[parameters('registries_lumonregistry_name')]",
+            "location": "eastus",
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic"
+            },
+            "properties": {
+                "adminUserEnabled": false,
+                "policies": {
+                    "quarantinePolicy": {
+                        "status": "disabled"
+                    },
+                    "trustPolicy": {
+                        "type": "Notary",
+                        "status": "disabled"
+                    },
+                    "retentionPolicy": {
+                        "days": 7,
+                        "status": "disabled"
+                    },
+                    "exportPolicy": {
+                        "status": "enabled"
+                    },
+                    "azureADAuthenticationAsArmPolicy": {
+                        "status": "enabled"
+                    }
+                },
+                "encryption": {
+                    "status": "disabled"
+                },
+                "dataEndpointEnabled": false,
+                "publicNetworkAccess": "Enabled",
+                "networkRuleBypassOptions": "AzureServices",
+                "networkRuleBypassAllowedForTasks": false,
+                "zoneRedundancy": "Disabled",
+                "anonymousPullEnabled": false,
+                "roleAssignmentMode": "LegacyRegistryPermissions"
+            }
+        },
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2025-01-31-preview",
+            "name": "[parameters('userAssignedIdentities_id_mdr_worker_prod_name')]",
+            "location": "eastus"
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2025-05-01",
+            "name": "[parameters('virtualNetworks_vnet_mdr_name')]",
+            "location": "eastus",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                "privateEndpointVNetPolicies": "Disabled",
+                "subnets": [
+                    {
+                        "name": "prod",
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_mdr_name'), 'prod')]",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "eastus",
+                                        "westus",
+                                        "westus3"
+                                    ]
+                                }
+                            ],
+                            "delegations": [
+                                {
+                                    "name": "Microsoft.ContainerInstance/containerGroups",
+                                    "id": "[concat(resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_mdr_name'), 'prod'), '/delegations/Microsoft.ContainerInstance/containerGroups')]",
+                                    "properties": {
+                                        "serviceName": "Microsoft.ContainerInstance/containerGroups"
+                                    },
+                                    "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                                }
+                            ],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        },
+                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2025-06-01",
+            "name": "[parameters('storageAccounts_lumonstorage_name')]",
+            "location": "eastus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_mdr_name'), 'prod')]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "allowBlobPublicAccess": false,
+                "allowSharedKeyAccess": true,
+                "networkAcls": {
+                    "ipv6Rules": [],
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_mdr_name'), 'prod')]",
+                            "action": "Allow",
+                            "state": "Succeeded"
+                        }
+                    ],
+                    "ipRules": [
+                        {
+                            "value": "REDACTED_IP_ADDRESS",
+                            "action": "Allow"
+                        }
+                    ],
+                    "defaultAction": "Deny"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+            "apiVersion": "2025-06-01",
+            "name": "[concat(parameters('storageAccounts_lumonstorage_name'), '/default/UnrefinedStorage')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/tableServices', parameters('storageAccounts_lumonstorage_name'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_lumonstorage_name'))]"
+            ],
+            "properties": {}
+        }
+    ]
+}
